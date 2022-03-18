@@ -1,16 +1,13 @@
 const mongoose = require("mongoose");
-const database = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 
 // Connect the database
 try {
 
     connectDB(
-        database,
+        process.env.DATABASE,
         mongoose,
         {
             useNewUrlParser: true,
-            useCreateIndex: true,
-            useFindAndModify: false
         });
 
 }catch (error){
@@ -18,5 +15,10 @@ try {
 }
 
 async function connectDB (database, mongoose, config) {
-   await mongoose.connect(database, config);
+    await mongoose.connect(database, config).then(con => {
+        console.log('DB connection Successfully!');
+    })
+    .catch(error => {
+        console.log(error);
+    });;
 }

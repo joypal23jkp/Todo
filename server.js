@@ -1,8 +1,13 @@
 require('dotenv').config();
 const app = require('./app');
-require("./init-db")
+const dotenv = require('dotenv');
+
+dotenv.config({
+    path: '.env'
+});
 
 const port = process.env.PORT;
+require('./init-db')
 
 process.on('uncaughtException', err => {
     console.log('UNCAUGHT EXCEPTION!!! shutting down...');
