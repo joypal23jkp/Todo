@@ -3,7 +3,7 @@ const app = require('./app');
 require("./init-db")
 
 const port = process.env.PORT;
-
+console.log('Hello Docker installed')
 process.on('uncaughtException', err => {
     console.log('UNCAUGHT EXCEPTION!!! shutting down...');
     console.log(err.name, err.message);
