@@ -1,20 +1,19 @@
-FROM node:16
+FROM node:14-alpine
 
-# Create app directory
+
 WORKDIR /usr/src/todo
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
+COPY package-lock.json .
+COPY package.json .
+RUN npm ci
 COPY . .
+
+ENV NODE_ENVIROMMENT=development \
+    PORT=8080 \
+    JWT_SECRET="daioshdidhf8455d5sdsdsd45" \
+    JWT_EXPIRES_IN=30d
 
 EXPOSE 8080
 
 CMD [ "nodemon", "server.js" ]
+

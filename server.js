@@ -1,9 +1,14 @@
 require('dotenv').config();
 const app = require('./app');
-require("./init-db")
+const dotenv = require('dotenv');
+
+dotenv.config({
+    path: '.env'
+});
 
 const port = process.env.PORT;
-console.log('Hello Docker installed')
+require('./init-db')
+
 process.on('uncaughtException', err => {
     console.log('UNCAUGHT EXCEPTION!!! shutting down...');
     console.log(err.name, err.message);
