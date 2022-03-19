@@ -15,5 +15,5 @@ ENV NODE_ENVIROMMENT=development \
 
 EXPOSE 8080
 
-CMD [ "nodemon", "server.js" ]
+CMD [ "npm", "start" ]
 
