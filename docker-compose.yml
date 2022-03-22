@@ -15,7 +15,7 @@ services:
       - todo_mongodb
     volumes:
       - .:/usr/src/todo
-  
+
   todo_mongodb:
     container_name: "todo_db_container"
     image: mongo:latest
